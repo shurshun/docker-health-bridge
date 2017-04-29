@@ -6,7 +6,7 @@ This util checks containers health status and sends it to [sensu api](https://se
 
 ## Configuration
 
-* `--sensu-api`, `-s` - Sensu API host (default: "localhost:4567") [env SENSU_API]
+* `--sensu-api`, `-s` - Sensu API host (default: "sensu-api:4567") [env SENSU_API]
 * `--hostname`, `-n` - Hostname to use for events [env HOSTNAME]
 * `--retries`, `r` - Set occurrences for sensu check before triggering an alert notification. Using Docker healthcheck param `--retries` (default: 3) [env RETRIES]
 * `--log-level`, `-l` - Set logging level: info, warning, error, fatal, debug, panic (default: warning) [env LOG_LEVEL]
