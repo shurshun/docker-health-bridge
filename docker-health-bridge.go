@@ -31,6 +31,7 @@ type sensuCheckResult struct {
 
 var (
 	dockerClient *client.Client
+	httpClient *http.Client
 )
 
 func sendToSensu(c *cli.Context, payload []byte) {
@@ -39,8 +40,7 @@ func sendToSensu(c *cli.Context, payload []byte) {
 	req, err := http.NewRequest("POST", sensuApi, bytes.NewBuffer(payload))
 	req.Header.Set("Content-Type", "application/json")
 
-	client := &http.Client{}
-	resp, err := client.Do(req)
+	resp, err := httpClient.Do(req)
 	if err != nil {
 		log.Error(err.Error())
 		return
@@ -121,6 +121,8 @@ func listenEvents(c *cli.Context) {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
+
+	httpClient = &http.Client{}
 
 	filters := filters.NewArgs()
 	filters.Add("type", events.ContainerEventType)
