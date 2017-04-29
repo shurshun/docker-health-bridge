@@ -1,0 +1,7 @@
+.git/
+.gitignore
+build
+dist
+Makefile
+README.md
+LICENSE
