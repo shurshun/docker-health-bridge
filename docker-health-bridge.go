@@ -18,7 +18,7 @@ import (
 	"strings"
 )
 
-const version = "1.0.4"
+const version = "1.0.5"
 
 type sensuCheckResult struct {
 	Source      string  `json:"source"`
@@ -135,7 +135,7 @@ func listenEvents(c *cli.Context) {
 		select {
 		case err := <-errs:
 			if err != nil && err != io.EOF {
-				log.Warn(err.Error())
+				log.Fatal(err.Error())
 			}
 		case e := <-messages:
 			inspectContainer(c, e.ID)
