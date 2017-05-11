@@ -108,7 +108,7 @@ func inspectContainer(c *cli.Context, id string) {
 			state.End.Sub(state.Start).Seconds(),
 			getRetries(c, info.Config))
 
-		log.Info(string(payload))
+		log.Debug(string(payload))
 
 		sendToSensu(c, payload)
 	}
