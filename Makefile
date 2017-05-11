@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 NAME := docker-health-bridge
-VERSION := v1.0.5
+VERSION := $$(git describe --tags `git rev-list --tags --max-count=1`)
 
 build:
 	go build -ldflags "-X main.Version=$(VERSION)"
